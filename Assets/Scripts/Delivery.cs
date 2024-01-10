@@ -1,23 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Delivery : MonoBehaviour
 {
     [SerializeField] Color32 hasPackageColor = new Color32 (1, 0, 0, 1);
     [SerializeField] Color32 noPackageColor = new Color32 (1, 1, 1, 1);
     [SerializeField] float destroyDelay;
+    [SerializeField] Transform place;
+    [SerializeField] List<float> xpositionList;
+    [SerializeField] List<float> ypositionList;
+    [SerializeField] GameObject Package;
     bool hasPackage;
-
     SpriteRenderer sprite;
 
     private void Start() 
     {
         sprite = GetComponent<SpriteRenderer>();
-    }
-    void OnCollisionEnter2D(Collision2D other) 
-    {
-        Debug.Log("La babuş bebiş");
     }
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -25,7 +25,8 @@ public class Delivery : MonoBehaviour
         {
             Debug.Log("Package Picked Up");
             hasPackage = true;
-            Destroy(other.gameObject, destroyDelay);
+            other.gameObject.SetActive(false);
+            TeleportMethod(other.gameObject);
             sprite.color = hasPackageColor;
         }
 
@@ -34,6 +35,15 @@ public class Delivery : MonoBehaviour
             Debug.Log("Package Delivered");
             hasPackage = false;
             sprite.color = noPackageColor;
+
+            TeleportMethod(Package);
+            Package.SetActive(true);
         }
+    }
+    void TeleportMethod(GameObject _gameObject)
+    {
+        place.localPosition = new Vector3(xpositionList[Random.Range(0,2)], ypositionList[Random.Range(0,2)], 0);
+        _gameObject.transform.localPosition = place.localPosition; 
+        Debug.Log(xpositionList+" "+xpositionList);
     }
 }

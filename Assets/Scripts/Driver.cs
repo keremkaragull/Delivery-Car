@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Scripting.APIUpdating;
+using UnityEngine.UIElements;
 
 public class Driver : MonoBehaviour
 {
     [SerializeField] float steerSpeed = 175f;
+    [SerializeField] GameObject Package;
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float slowSpeed = 5f;
     [SerializeField] float boostSpeed = 20f;
+    float x;
     void Update()
     {
         float steerAmount = Input.GetAxis("Horizontal") * steerSpeed * Time.deltaTime;
@@ -32,4 +35,5 @@ public class Driver : MonoBehaviour
             moveSpeed = slowSpeed;
         }
     }
+
 }
