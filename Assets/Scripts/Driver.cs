@@ -14,21 +14,23 @@ public class Driver : MonoBehaviour
 
     void Update()
     {
+        float moveAmount = Input.GetAxis("Vertical") * moveSpeed  * Time.deltaTime;
+        transform.Translate(0, moveAmount, 0);
+        
         if(!Mathf.Approximately(Input.GetAxis("Vertical"), 0 ))
         {
             float steerAmount = Input.GetAxis("Horizontal") * steerSpeed * Time.deltaTime;
-            if (Input.GetAxis("Vertical") == 1)
+            if (Input.GetAxis("Vertical") > 0)
             {
                 transform.Rotate(0, 0, -steerAmount);
             }
-            else if (Input.GetAxis("Vertical") == -1)
+            else if (Input.GetAxis("Vertical") < 0)
             {
                 transform.Rotate(0, 0, steerAmount);
             }
 
         }
-            float moveAmount = Input.GetAxis("Vertical") * moveSpeed  * Time.deltaTime;
-            transform.Translate(0, moveAmount, 0);
+            
     }
 
     void OnTriggerEnter2D(Collider2D other)
