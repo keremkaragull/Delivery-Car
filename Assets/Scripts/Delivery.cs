@@ -43,6 +43,6 @@ public class Delivery : MonoBehaviour
     void TeleportMethod(GameObject _gameObject)
     {
         _gameObject.SetActive(true);
-        _gameObject.transform.localPosition = new Vector3(xpositionList[Random.Range(0,2)], ypositionList[Random.Range(0,2)], 0);
+        _gameObject.transform.localPosition = new Vector3(xpositionList[Random.Range(0,2)], ypositionList[Random.Range (0,2)], 0);
     }
 }

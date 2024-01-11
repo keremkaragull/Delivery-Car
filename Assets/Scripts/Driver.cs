@@ -35,5 +35,4 @@ public class Driver : MonoBehaviour
             moveSpeed = slowSpeed;
         }
     }
-
 }
