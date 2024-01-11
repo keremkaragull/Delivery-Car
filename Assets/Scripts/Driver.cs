@@ -17,11 +17,11 @@ public class Driver : MonoBehaviour
         if(!Mathf.Approximately(Input.GetAxis("Vertical"), 0 ))
         {
             float steerAmount = Input.GetAxis("Horizontal") * steerSpeed * Time.deltaTime;
-            if (Input.GetAxis("Vertical") == 1)
+            if (Input.GetAxis("Vertical") > 0)
             {
                 transform.Rotate(0, 0, -steerAmount);
             }
-            else if (Input.GetAxis("Vertical") == -1)
+            else if (Input.GetAxis("Vertical") < 0)
             {
                 transform.Rotate(0, 0, steerAmount);
             }
