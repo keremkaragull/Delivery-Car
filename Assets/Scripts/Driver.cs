@@ -14,9 +14,8 @@ public class Driver : MonoBehaviour
 
     void Update()
     {
-        if(!Mathf.Approximately(Input.GetAxis("Vertical"), 0 ))
-        {
             float steerAmount = Input.GetAxis("Horizontal") * steerSpeed * Time.deltaTime;
+
             if (Input.GetAxis("Vertical") > 0)
             {
                 transform.Rotate(0, 0, -steerAmount);
@@ -25,7 +24,7 @@ public class Driver : MonoBehaviour
             {
                 transform.Rotate(0, 0, steerAmount);
             }
-        }
+
             float moveAmount = Input.GetAxis("Vertical") * moveSpeed  * Time.deltaTime;
             transform.Translate(0, moveAmount, 0);
     }
