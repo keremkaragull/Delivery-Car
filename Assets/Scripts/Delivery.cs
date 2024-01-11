@@ -8,7 +8,6 @@ public class Delivery : MonoBehaviour
     [SerializeField] Color32 hasPackageColor = new Color32 (1, 0, 0, 1);
     [SerializeField] Color32 noPackageColor = new Color32 (1, 1, 1, 1);
     [SerializeField] float destroyDelay;
-    [SerializeField] Transform place;
     [SerializeField] List<float> xpositionList;
     [SerializeField] List<float> ypositionList;
     [SerializeField] GameObject Package;
@@ -38,14 +37,12 @@ public class Delivery : MonoBehaviour
             Debug.Log("Package Delivered");
             hasPackage = false;
             sprite.color = noPackageColor;
-
             TeleportMethod(Package);
         }
     }
     void TeleportMethod(GameObject _gameObject)
     {
-        Package.SetActive(true);
-        place.localPosition = new Vector3(xpositionList[Random.Range(0,2)], ypositionList[Random.Range(0,2)], 0);
-        _gameObject.transform.localPosition = place.localPosition; 
+        _gameObject.SetActive(true);
+        _gameObject.transform.localPosition = new Vector3(xpositionList[Random.Range(0,2)], ypositionList[Random.Range(0,2)], 0);
     }
 }
