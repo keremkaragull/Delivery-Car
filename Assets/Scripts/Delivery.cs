@@ -15,6 +15,10 @@ public class Delivery : MonoBehaviour
     bool hasPackage;
     SpriteRenderer sprite;
 
+    private void Awake() {
+
+        TeleportMethod(Package);   
+    }
     private void Start() 
     {
         sprite = GetComponent<SpriteRenderer>();
@@ -26,7 +30,6 @@ public class Delivery : MonoBehaviour
             Debug.Log("Package Picked Up");
             hasPackage = true;
             other.gameObject.SetActive(false);
-            TeleportMethod(other.gameObject);
             sprite.color = hasPackageColor;
         }
 
@@ -37,13 +40,12 @@ public class Delivery : MonoBehaviour
             sprite.color = noPackageColor;
 
             TeleportMethod(Package);
-            Package.SetActive(true);
         }
     }
     void TeleportMethod(GameObject _gameObject)
     {
+        Package.SetActive(true);
         place.localPosition = new Vector3(xpositionList[Random.Range(0,2)], ypositionList[Random.Range(0,2)], 0);
         _gameObject.transform.localPosition = place.localPosition; 
-        Debug.Log(xpositionList+" "+xpositionList);
     }
 }

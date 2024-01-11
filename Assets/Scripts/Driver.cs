@@ -8,16 +8,16 @@ using UnityEngine.UIElements;
 public class Driver : MonoBehaviour
 {
     [SerializeField] float steerSpeed = 175f;
-    [SerializeField] GameObject Package;
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float slowSpeed = 5f;
     [SerializeField] float boostSpeed = 20f;
-    float x;
     void Update()
+    {
+    if(!Mathf.Approximately(Input.GetAxis("Vertical"), 0 ))
     {
         float steerAmount = Input.GetAxis("Horizontal") * steerSpeed * Time.deltaTime;
         transform.Rotate(0, 0, -steerAmount);
-
+    }
         float moveAmount = Input.GetAxis("Vertical") * moveSpeed  * Time.deltaTime;
         transform.Translate(0, moveAmount, 0);
     }
