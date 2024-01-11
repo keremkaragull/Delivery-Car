@@ -11,10 +11,12 @@ public class Delivery : MonoBehaviour
     [SerializeField] List<float> xpositionList;
     [SerializeField] List<float> ypositionList;
     [SerializeField] GameObject Package;
+    
     bool hasPackage;
     SpriteRenderer sprite;
 
-    private void Awake() {
+    private void Awake() 
+    {
 
         TeleportMethod(Package);   
     }
