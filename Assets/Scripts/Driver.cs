@@ -25,7 +25,6 @@ public class Driver : MonoBehaviour
             {
                 transform.Rotate(0, 0, steerAmount);
             }
-
         }
             float moveAmount = Input.GetAxis("Vertical") * moveSpeed  * Time.deltaTime;
             transform.Translate(0, moveAmount, 0);
