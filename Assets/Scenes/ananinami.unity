@@ -12734,7 +12734,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   steerSpeed: 175
   moveSpeed: 15
-  slowSpeed: 15
+  slowSpeed: 8
   boostSpeed: 25
 --- !u!212 &1200114251
 SpriteRenderer:
@@ -12894,7 +12894,6 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294967295
   destroyDelay: 0
-  place: {fileID: 667984548}
   xpositionList:
   - 47.6
   - -7.45
